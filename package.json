@@ -1,0 +1,29 @@
+{
+  "name": "wp-log-my-run",
+  "version": "1.0.0",
+  "description": "WP version of the log my run app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinDahlberg/wp-log-my-run.git"
+  },
+  "author": "Kevin Dahlberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KevinDahlberg/wp-log-my-run/issues"
+  },
+  "homepage": "https://github.com/KevinDahlberg/wp-log-my-run#readme",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-animate": "^1.6.4",
+    "angular-aria": "^1.6.4",
+    "angular-material": "^1.1.4",
+    "angular-messages": "^1.6.4",
+    "angular-moment": "^1.0.1",
+    "angular-route": "^1.6.4",
+    "moment": "^2.18.1"
+  }
+}
