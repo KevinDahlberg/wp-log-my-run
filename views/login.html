@@ -1,0 +1,32 @@
+<md-content layout="row" layout-align="center center">
+    <form class="login-input" action="<?php echo site_url( '/wp-login.php' ); ?>" method="post">
+    <md-input-container>
+          <label for="username">Username</label>
+          <input type="text" id="user_login"/>
+    </md-input-container>
+    <br>
+    <md-input-container>
+          <label for="password">Password:</label>
+          <input type="password" id="user_pass"/>
+    </md-input-container>
+    <div layout="row" layout-align="space-around center">
+          <md-button class="md-raised md-primary md-hue-1 login-button" id="wp-submit" type="submit" name="wp-submit" value="Login">Log In</md-button>
+          <md-button class="md-raised md-primary md-hue-1 login-button" a href="#register">Register</md-button></a>
+        </div>
+
+    </form>
+  </md-content>
+
+  <!-- <?php
+  $redirect_to = '';
+  ?>
+  <form name="loginform" id="loginform" >
+  <p>Username: <input id="user_login" type="text" size="20" value="" name="log"></p>
+  <p>Password: <input id="user_pass" type="password" size="20" value="" name="pwd"></p>
+  <p><input id="rememberme" type="checkbox" value="forever" name="rememberme"></p>
+
+  <p><input  type="submit" value="Login" name="wp-submit"></p>
+
+  <input type="hidden" value="<?php echo esc_attr( $redirect_to ); ?>" name="redirect_to">
+  <input type="hidden" value="1" name="testcookie">
+  </form> -->
