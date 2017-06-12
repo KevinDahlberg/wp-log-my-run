@@ -1,16 +1,16 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngSanitize'])
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngSanitize'])
 .config(function($routeProvider, $locationProvider) {
 
     $routeProvider
     .when('/', {
-        templateUrl: localized.partials + 'main.html',
-        controller: 'Main'
+        templateUrl: localized.partials + 'run_history.html',
+        controller: 'LoginController'
     })
-    .when('/:slug', {
-        templateUrl: localized.partials + 'content.html',
-        controller: 'Content'
+    .when('/login', {
+        templateUrl: localized.partials + 'login.html',
+        controller: 'LoginController'
     })
     .otherwise({
-        redirectTo: '/'
+        redirectTo: '/login'
     });
-})
+});

@@ -5,14 +5,13 @@
 
 function scripts() {
 
-	// load bootstrap css
-	wp_enqueue_style( 'angular-material', THEME_DIR_URI . 'node_modules/angular-material/angular-material.css' );
-
+	// load angular-material css
+	wp_enqueue_style( 'angular-material', get_template_directory_uri() . '/node_modules/angular-material/angular-material.css' );
 
 	// load Font Awesome css
-	wp_enqueue_style( 'font-awesome', THEME_DIR_URI . '/includes/css/font-awesome.min.css', false, '4.1.0' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/includes/css/font-awesome.min.css', false, '4.1.0' );
 
-	// load _tk styles
+	// load stylesheet
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 
   //load angular
@@ -26,8 +25,12 @@ function scripts() {
   wp_enqueue_script('moment', get_template_directory_uri() .'/node_modules/moment/moment.js');
   wp_enqueue_script('angular-moment', get_template_directory_uri() .'/node_modules/angular-moment/angular-moment.js');
   wp_enqueue_script('angular-sanitize', get_template_directory_uri() .'/node_modules/angular-sanitize/angular-sanitize.min.js');
-  wp_enqueue_script('scripts', get_stylesheet_directory_uri() . '/scripts/config.js', array( 'angularjs', 'angularjs-route', 'angular-animate',
-    'angular-aria', 'angular-messages', 'angular-materialjs', 'angular-material-datepicker', 'moment', 'angular-moment', 'angular-sanitize'));
+
+  wp_enqueue_script('scripts', get_stylesheet_directory_uri() . '/scripts/config.js');
+
+  //load controllers
+  wp_enqueue_script('LoginController', get_template_directory_uri() .'/scripts/controllers/LoginController.js');
+
 
   // With get_stylesheet_directory_uri()
   wp_localize_script('scripts', 'localized',
