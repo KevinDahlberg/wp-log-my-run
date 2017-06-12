@@ -26,12 +26,12 @@ function scripts() {
   wp_enqueue_script('moment', get_template_directory_uri() .'/node_modules/moment/moment.js');
   wp_enqueue_script('angular-moment', get_template_directory_uri() .'/node_modules/angular-moment/angular-moment.js');
   wp_enqueue_script('angular-sanitize', get_template_directory_uri() .'/node_modules/angular-sanitize/angular-sanitize.min.js');
-  wp_enqueue_script('scripts', get_stylesheet_directory_uri() . '/includes/js/scripts.js', array( 'angularjs', 'angularjs-route', 'angular-animate',
+  wp_enqueue_script('scripts', get_stylesheet_directory_uri() . '/scripts/config.js', array( 'angularjs', 'angularjs-route', 'angular-animate',
     'angular-aria', 'angular-messages', 'angular-materialjs', 'angular-material-datepicker', 'moment', 'angular-moment', 'angular-sanitize'));
 
   // With get_stylesheet_directory_uri()
   wp_localize_script('scripts', 'localized',
-  array('partials' => get_stylesheet_directory_uri() . '/partials/'));
+  array('partials' => get_stylesheet_directory_uri() . '/views/'));
 }
 
 add_action( 'wp_enqueue_scripts', 'scripts');

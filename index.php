@@ -34,7 +34,7 @@
     <!-- <script type="text/javascript" src="scripts/controllers/show_runs_controller.js"></script> -->
     <!-- <script type="text/javascript" src="scripts/controllers/RunViewController.js"></script> -->
     <!-- <script type="text/javascript" src="scripts/controllers/EditRunController.js"></script> -->
-
+<?php wp_head(); ?>
   </head>
   <body>
     <div ng-controller="ShowRunsController as showRun">
