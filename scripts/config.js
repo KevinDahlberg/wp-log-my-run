@@ -1,16 +1,41 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngSanitize'])
-.config(function($routeProvider, $locationProvider) {
 
-    $routeProvider
-    .when('/', {
-        templateUrl: localized.partials + 'run_history.html',
-        controller: 'LoginController'
-    })
-    .when('/login', {
-        templateUrl: localized.partials + 'login.html',
-        controller: 'LoginController'
-    })
-    .otherwise({
-        redirectTo: '/login'
+.filter('unique', function() {
+  return function(obj) {
+    let dates = []
+    angular.forEach(obj, function(value, key){
+      if (dates.includes(value.date.dateRange)){
+      } else {
+        dates.push(value.date.dateRange);
+      }
     });
-});
+    return dates;
+  };
+})
+
+.config(['$routeProvider', '$locationProvider', '$mdDateLocaleProvider', '$mdThemingProvider',
+function($routeProvider, $locationProvider, $mdDateLocaleProvider, $mdThemingProvider) {
+
+  $locationProvider.hashPrefix('');
+  $mdThemingProvider.theme('default')
+  .primaryPalette('teal')
+  .accentPalette('grey')
+  .dark();
+
+  $routeProvider
+  .when('/', {
+    templateUrl: localized.partials + 'home.html',
+    controller: 'HomeController as home'
+  })
+  .when('/login', {
+    templateUrl: localized.partials + 'login.html',
+    controller: 'LoginController as login'
+  })
+  .when('/enter-run', {
+    templateUrl: localized.partials + 'enter_run.html',
+    controller: 'EnterRunController as enterRun'
+  })
+  .otherwise({
+    redirectTo: '/login'
+  });
+}]);

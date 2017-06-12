@@ -1,0 +1,148 @@
+/**
+* CSS Stylesheet
+* These styles override any styles defined by other CSS files in project
+* Items (in alphabetical order):
+** 1. Type selectors
+** 2. Class selectors
+** 3. ID selectors
+*/
+
+/*Type Selectors*/
+body {
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+}
+
+h1 {
+  color : black;
+  text-align: center;
+}
+
+header {
+  margin-bottom : 1em;
+  width: 100%;
+}
+
+/*Class Selectors*/
+.card {
+  padding : 1em;
+}
+
+.container {
+  min-height: 600px;
+  min-width: 375px;
+  margin: 0 auto;
+}
+
+.container-home {
+  height: 525px;
+  width: 370px;
+}
+
+.container-input {
+  height: 575px;
+  width : 375px;
+}
+
+.date-select {
+  font-size : 1.5em;
+}
+
+.login-input{
+  margin-top: 2em;
+  font-size : 1.5em;
+  line-height : 2em;
+}
+
+.md-datepicker-input {
+  font-size : 1.5em;
+}
+
+.run-date {
+  border-right: 1px solid teal;
+  margin-right: .5em;
+  padding-right: .5em;
+}
+
+.run-history{
+  min-height: 3.5em;
+  width: 10em;
+}
+
+.run-history:hover {
+  background-color: grey;
+}
+
+.run-history:active {
+  background-color: teal;
+}
+
+.run-input{
+  font-size : 1.5em;
+  line-height : 2em;
+}
+
+.summary {
+  width: 100%;
+  padding: 0em;
+  margin: 0em;
+}
+
+.summary-header {
+  width: 100%;
+  border-bottom-width: 1px;
+  border-bottom-color: grey;
+  border-bottom-style: solid;
+  padding-bottom: 0.25em;
+}
+
+.summary-title {
+  padding: 1em 0.5em;
+  width: 100%;
+}
+
+.summary-item {
+  width: 100%;
+  border-bottom: 1px solid teal;
+  padding: 0;
+}
+
+.view-card {
+  width: 320px;
+  padding: 3em 3em;
+}
+
+.view-date, .view-title{
+  border-bottom: 1px solid teal;
+}
+
+.view-item {
+  font-size : 1.5em;
+  line-height: 2.0em;
+  margin-bottom: 0.5em;
+}
+
+.view-data {
+  padding-left : 0.5em;
+}
+
+.view-notes {
+  font-size : 1.0em;
+  line-height: 1.5em;
+  padding-bottom: 1em;
+  padding-left: .5em;
+}
+
+/*Id Selectors*/
+#addButton {
+   display: block;
+   margin: auto;
+   background-repeat: no-repeat;
+   display: inline-block;
+   vertical-align: middle;
+   fill: currentColor;
+   height: 24px;
+   width: 24px;
+   min-height: 24px;
+   min-width: 24px;
+}
