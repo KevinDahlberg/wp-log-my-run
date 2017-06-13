@@ -27,12 +27,34 @@ function scripts() {
   wp_enqueue_script('angular-sanitize', get_template_directory_uri() .'/node_modules/angular-sanitize/angular-sanitize.min.js');
 
   wp_enqueue_script('constants', get_template_directory_uri() .'/scripts/constants.js');
+	wp_enqueue_script('auth', get_template_directory_uri() .'/scripts/auth.js');	wp_localize_script('auth', 'WPsettings', array(
+			'root' => esc_url_raw( rest_url() ),
+			'nonce' => wp_create_nonce( 'wp_rest' ),
+			'current_ID' => get_the_ID()
+		));
   wp_enqueue_script('scripts', get_stylesheet_directory_uri() . '/scripts/config.js');
+
+	//load services
+	wp_enqueue_script('RunService', get_template_directory_uri() .'/scripts/services/RunService.js');
+
+	wp_localize_script( 'RunService', 'login_object', array(
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'redirecturl' => home_url(),
+			'loadingmessage' => __('Sending user info, please wait...')
+	));
+	
+	if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
+		wp_localize_script('RunService', 'WPsettings', array(
+			'root' => esc_url_raw( rest_url() ),
+			'nonce' => wp_create_nonce( 'wp_rest' ),
+			'current_ID' => get_the_ID()
+		));
+	};
 
   //load controllers
   wp_enqueue_script('LoginController', get_template_directory_uri() .'/scripts/controllers/LoginController.js');
   wp_enqueue_script('HomeController', get_template_directory_uri() .'/scripts/controllers/HomeController.js');
-  wp_enqueue_script('EnterRunController', get_template_directory_uri() .'/scripts/controllers/EnterRunController');
+  wp_enqueue_script('EnterRunController', get_template_directory_uri() .'/scripts/controllers/EnterRunController.js');
 
 
   // With get_stylesheet_directory_uri()
