@@ -23,7 +23,7 @@ function($routeProvider, $locationProvider, $mdDateLocaleProvider, $mdThemingPro
   .dark();
 
   $routeProvider
-  .when('/', {
+  .when('/home', {
     templateUrl: localized.partials + 'home.html',
     controller: 'HomeController as home'
   })
@@ -34,6 +34,10 @@ function($routeProvider, $locationProvider, $mdDateLocaleProvider, $mdThemingPro
   .when('/enter-run', {
     templateUrl: localized.partials + 'enter_run.html',
     controller: 'EnterRunController as enterRun'
+  })
+  .when('/view-run', {
+    templateUrl: localized.partials + 'view_run.html',
+    controller: 'ViewRunController as viewRun'
   })
   .otherwise({
     redirectTo: '/login'

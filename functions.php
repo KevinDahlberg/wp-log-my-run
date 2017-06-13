@@ -42,7 +42,7 @@ function scripts() {
 			'redirecturl' => home_url(),
 			'loadingmessage' => __('Sending user info, please wait...')
 	));
-	
+
 	if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
 		wp_localize_script('RunService', 'WPsettings', array(
 			'root' => esc_url_raw( rest_url() ),
@@ -55,6 +55,7 @@ function scripts() {
   wp_enqueue_script('LoginController', get_template_directory_uri() .'/scripts/controllers/LoginController.js');
   wp_enqueue_script('HomeController', get_template_directory_uri() .'/scripts/controllers/HomeController.js');
   wp_enqueue_script('EnterRunController', get_template_directory_uri() .'/scripts/controllers/EnterRunController.js');
+	wp_enqueue_script('ViewRunController', get_template_directory_uri() .'/scripts/controllers/ViewRunController.js');
 
 
   // With get_stylesheet_directory_uri()

@@ -7,8 +7,8 @@
 * HOME view.
 */
 
-myApp.controller('EnterRunController', ['$location',
-function($location){
+myApp.controller('EnterRunController', ['RunService',
+function(RunService){
   let enterRun = this;
 
   enterRun.date = moment();

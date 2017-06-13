@@ -1,0 +1,19 @@
+<md-content layout="column" layout-align="start center" class="container-input">
+<div layout = "row">
+<md-card class="view-card">
+<span class="md-headline view-item view-date">{{runView.savedRun.date.date}}</span>
+<span class="md-headline view-item view-data">{{runView.savedRun.distance}} miles</span>
+<span class="md-headline view-item view-data">{{runView.savedRun.time}}</span>
+<span class="md-headline view-item view-title">Notes</span>
+<span class="md-subhead view-notes">{{runView.savedRun.notes}}</span>
+</md-card>
+</div>
+
+    <md-button class="md-fab md-fab-bottom-left md-primary md-hue-1" aria-label="Submit Run" ng-click="runView.deleteRun(runView.savedRun)">
+     <i class="material-icons" id="addButton">delete</i>
+    </md-button>
+    <md-button class="md-fab md-fab-bottom-right md-primary md-hue-1" aria-label="Submit Run" ng-click="runView.runEdit()">
+     <i class="material-icons" id="addButton">mode_edit</i>
+    </md-button>
+
+</md-content>

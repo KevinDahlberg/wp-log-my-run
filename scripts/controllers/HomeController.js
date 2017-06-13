@@ -5,8 +5,8 @@
 * @return shows all of the completed runs
 */
 
-myApp.controller('HomeController', ['$location',
-function($location){
+myApp.controller('HomeController', ['RunService',
+function(RunService){
   let home = this;
 
   //
