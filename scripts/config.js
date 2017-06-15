@@ -1,45 +1,45 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngSanitize'])
 
-.filter('unique', function() {
-  return function(obj) {
-    let dates = []
-    angular.forEach(obj, function(value, key){
-      if (dates.includes(value.date.dateRange)){
-      } else {
-        dates.push(value.date.dateRange);
-      }
-    });
-    return dates;
-  };
-})
+  .filter('unique', function() {
+    return function(obj) {
+      let dates = []
+      angular.forEach(obj, function(value, key) {
+        if (dates.includes(value.date.dateRange)) {} else {
+          dates.push(value.date.dateRange);
+        }
+      });
+      return dates;
+    };
+  })
 
-.config(['$routeProvider', '$locationProvider', '$mdDateLocaleProvider', '$mdThemingProvider',
-function($routeProvider, $locationProvider, $mdDateLocaleProvider, $mdThemingProvider) {
+  .config(['$routeProvider', '$locationProvider', '$mdDateLocaleProvider', '$mdThemingProvider',
+    function($routeProvider, $locationProvider, $mdDateLocaleProvider, $mdThemingProvider) {
 
-  $locationProvider.hashPrefix('');
-  $mdThemingProvider.theme('default')
-  .primaryPalette('teal')
-  .accentPalette('grey')
-  .dark();
+      $locationProvider.hashPrefix('');
+      $mdThemingProvider.theme('default')
+        .primaryPalette('teal')
+        .accentPalette('grey')
+        .dark();
 
-  $routeProvider
-  .when('/home', {
-    templateUrl: localized.partials + 'home.html',
-    controller: 'HomeController as home'
-  })
-  .when('/login', {
-    templateUrl: localized.partials + 'login.html',
-    controller: 'LoginController as login'
-  })
-  .when('/enter-run', {
-    templateUrl: localized.partials + 'enter_run.html',
-    controller: 'EnterRunController as enterRun'
-  })
-  .when('/view-run', {
-    templateUrl: localized.partials + 'view_run.html',
-    controller: 'ViewRunController as viewRun'
-  })
-  .otherwise({
-    redirectTo: '/login'
-  });
-}]);
+      $routeProvider
+        .when('/home', {
+          templateUrl: localized.partials + 'home.html',
+          controller: 'HomeController as home'
+        })
+        .when('/login', {
+          templateUrl: localized.partials + 'login.html',
+          controller: 'LoginController as login'
+        })
+        .when('/enter-run', {
+          templateUrl: localized.partials + 'enter_run.html',
+          controller: 'EnterRunController as enterRun'
+        })
+        .when('/view-run', {
+          templateUrl: localized.partials + 'view_run.html',
+          controller: 'ViewRunController as viewRun'
+        })
+        .otherwise({
+          redirectTo: '/login'
+        });
+    }
+  ]);
