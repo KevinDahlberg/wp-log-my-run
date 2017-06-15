@@ -13,31 +13,31 @@
   <?php wp_head(); ?>
 </head>
 <body>
+  <?php get_header() ?>
+  <!-- <ng-include src="'<?php echo get_stylesheet_directory_uri() ?>/views/partials/header.html'"></ng-include> -->
+  <?php if( is_user_logged_in() && current_user_can( 'edit_posts' ) ) : ?>
 
-  <ng-include src="'<?php echo get_stylesheet_directory_uri() ?>/views/partials/header.html'"></ng-include>
-<?php if( is_user_logged_in() && current_user_can( 'edit_posts' ) ) : ?>
-
-  <div class="container">
-    <div layout="column" layout-align="start center">
-      <main ng-view></main>
+    <div class="container">
+      <div layout="column" layout-align="start center">
+        <main ng-view></main>
+      </div>
     </div>
-  </div>
 
   <?php else : ?>
 
     <form class="login-input" action="" method="post">
       <div layout="row" layout-align="space-around center">
-      <md-input-container>
-        <label>Username</label>
-        <input type="text" name="log" />
-      </md-input-container>
-    </div>
-    <div layout="row" layout-align="space-around center">
-      <md-input-container>
-        <label>Password</label>
-        <input type="password" name="pwd" />
-      </md-input-container>
-    </div>
+        <md-input-container>
+          <label>Username</label>
+          <input type="text" name="log" />
+        </md-input-container>
+      </div>
+      <div layout="row" layout-align="space-around center">
+        <md-input-container>
+          <label>Password</label>
+          <input type="password" name="pwd" />
+        </md-input-container>
+      </div>
       <div layout="row" layout-align="space-around center">
         <md-button class="md-raised md-primary md-hue-1 login-button" id="wp-submit" type="submit" name="wp-submit" value="Login">Log In</md-button>
         <input type="hidden" name="action" value="my_login_action" />
@@ -46,19 +46,6 @@
         <!-- </a> -->
       </div>
     </form>
-    <!-- <form action="" method="post">
-      <div>
-        User name: <input name="log" type="text" />
-      </div>
-      <div>
-        Password: <input name="pwd" type="password" />
-      </div>
-      <div>
-        <input type="submit" value="Login" />
-        <input type="hidden" name="action" value="my_login_action" />
-      </div>
-    </form> -->
-
   <?php endif; ?>
 </body>
 </html>
