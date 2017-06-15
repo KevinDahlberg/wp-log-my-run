@@ -2,12 +2,6 @@ myApp.factory('RunService', ['$http', '$location',
       function($http, $location) {
         let RunService = this;
 
-        let loginUser = (user) => {
-          $http.post(WPsettings.root + 'wp-login.php', user).then((response) => {
-            console.log('login successful with ', response);
-          });
-        };
-
         let req = {
           method: 'POST',
           url: WPsettings.root + 'wp/v2/posts/' + WPsettings.current_ID,
@@ -25,7 +19,6 @@ myApp.factory('RunService', ['$http', '$location',
           });
         };
         return {
-          loginUser,
           req,
           addRun,
         };

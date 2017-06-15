@@ -26,10 +26,6 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngS
           templateUrl: localized.partials + 'home.html',
           controller: 'HomeController as home'
         })
-        .when('/login', {
-          templateUrl: localized.partials + 'login.html',
-          controller: 'LoginController as login'
-        })
         .when('/enter-run', {
           templateUrl: localized.partials + 'enter_run.html',
           controller: 'EnterRunController as enterRun'
@@ -39,7 +35,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngS
           controller: 'ViewRunController as viewRun'
         })
         .otherwise({
-          redirectTo: '/login'
+          redirectTo: '/home'
         });
     }
   ]);

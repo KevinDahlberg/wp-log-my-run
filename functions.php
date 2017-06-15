@@ -52,7 +52,6 @@ function scripts() {
 	};
 
   //load controllers
-  wp_enqueue_script('LoginController', get_template_directory_uri() .'/scripts/controllers/LoginController.js');
   wp_enqueue_script('HomeController', get_template_directory_uri() .'/scripts/controllers/HomeController.js');
   wp_enqueue_script('EnterRunController', get_template_directory_uri() .'/scripts/controllers/EnterRunController.js');
 	wp_enqueue_script('ViewRunController', get_template_directory_uri() .'/scripts/controllers/ViewRunController.js');
@@ -65,4 +64,20 @@ function scripts() {
 
 add_action( 'wp_enqueue_scripts', 'scripts');
 
+add_action('init', function(){
+
+  // not the login request?
+  if(!isset($_POST['action']) || $_POST['action'] !== 'my_login_action')
+    return;
+
+  // see the codex for wp_signon()
+  $result = wp_signon();
+
+  if(is_wp_error($result))
+    wp_die('Login failed. Wrong password or user name?');
+
+  // redirect back to the requested page if login was successful
+  header('Location: ' . $_SERVER['REQUEST_URI']);
+  exit;
+});
 ?>
