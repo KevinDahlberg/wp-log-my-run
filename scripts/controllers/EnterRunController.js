@@ -13,6 +13,7 @@ function(RunService){
 
   enterRun.date = moment();
   enterRun.isOpen = false;
+  enterRun.addRun = RunService.addRun;
 
   // enterRun.savedRun = UserService.savedRun;
   // enterRun.addRun = DatabaseService.addRun;

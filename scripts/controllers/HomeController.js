@@ -9,6 +9,7 @@ myApp.controller('HomeController', ['RunService',
 function(RunService){
   let home = this;
 
+  home.enterView = RunService.enterView;
   //
   // showRun.saveRun = UserService.saveRun;
   // showRun.enterView = UserService.enterView;
