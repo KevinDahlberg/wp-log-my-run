@@ -76,4 +76,16 @@ add_action('init', function(){
   header('Location: ' . $_SERVER['REQUEST_URI']);
   exit;
 });
+
+// function slug_time() {
+//     register_rest_field( 'post',
+//         'time',
+//         array(
+//             'get_callback'    => 'get_time',
+//             'update_callback' => 'update_time',
+//             'schema'          => 'string',
+//         )
+//     );
+// }
+// add_action( 'init', 'slug_time' );
 ?>

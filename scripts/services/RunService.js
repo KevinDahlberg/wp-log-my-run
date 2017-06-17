@@ -19,7 +19,16 @@ myApp.factory('RunService', ['$http', '$location',
     };
 
     let newRun = {
-      title : 'test'
+      title : 'testing 123',
+      status : 'publish',
+      content : 'some more content',
+      meta : {key : 'time', value : '0'}
+      // meta : [
+      //   {'key' : 'date', 'value' : '06/07/2017'},
+      //   {'key' : 'distance', 'value' : '1.00'},
+      //   {'key' : 'time', 'value' : '00:07:00'},
+      //   {'key' : 'notes', 'value' : ''}
+      // ]
     };
     /**
      * @desc variable that contains the headers for the POST to the WP backend
@@ -34,11 +43,10 @@ myApp.factory('RunService', ['$http', '$location',
       data: newRun
     };
 
-    let data = {title : 'test'};
 
     let addRun = () => {
       $http(newRunReq).then((response) => {
-        console.log('post was successful');
+        console.log('post was successful, ', response);
         });
     };
     return {
