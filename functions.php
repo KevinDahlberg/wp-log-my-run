@@ -29,6 +29,10 @@ function scripts() {
   wp_enqueue_script('constants', get_template_directory_uri() .'/scripts/constants.js');
   wp_enqueue_script('scripts', get_stylesheet_directory_uri() . '/scripts/config.js');
 
+	//classes
+	wp_enqueue_script('RunClass', get_template_directory_uri() . '/scripts/classes/RunClass.js');
+	wp_enqueue_script('DropdownClass', get_template_directory_uri() . '/scripts/classes/DropdownClass.js');
+
 	//load services
 	wp_enqueue_script('RunService', get_template_directory_uri() .'/scripts/services/RunService.js');
 

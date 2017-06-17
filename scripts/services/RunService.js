@@ -11,6 +11,14 @@ myApp.factory('RunService', ['$http', '$location',
     console.log('Session Token is ', WPsettings.session_token);
 
     /**
+     * @desc creates objects that are used to populate the dropdowns in the add
+     * and edit run views
+     */
+    let dropdownTime = new Time(TIME);
+    let dropdownMiles = new Distance(DISTANCE);
+
+
+    /**
      * @function enter view
      * @desc changes the view to the enter_run view
      */
@@ -19,10 +27,13 @@ myApp.factory('RunService', ['$http', '$location',
     };
 
     let newRun = {
-      title : 'testing 123',
-      status : 'publish',
-      content : 'some more content',
-      meta : {key : 'time', value : '0'}
+      title: 'testing 123',
+      status: 'publish',
+      content: 'some more content',
+      meta: {
+        key: 'time',
+        value: '0'
+      }
       // meta : [
       //   {'key' : 'date', 'value' : '06/07/2017'},
       //   {'key' : 'distance', 'value' : '1.00'},
@@ -34,24 +45,38 @@ myApp.factory('RunService', ['$http', '$location',
      * @desc variable that contains the headers for the POST to the WP backend
      * @param url, headers, and data
      */
-    let newRunReq = {
-      method: 'POST',
-      url: WPsettings.root + 'wp/v2/posts/',
-      headers: {
-        'X-WP-Nonce': WPsettings.nonce
-      },
-      data: newRun
-    };
+    // let newRunReq = {
+    //   method: 'POST',
+    //   url: WPsettings.root + 'wp/v2/posts/',
+    //   headers: {
+    //     'X-WP-Nonce': WPsettings.nonce
+    //   },
+    //   data: newRun
+    // };
 
 
-    let addRun = () => {
+    let addRun = (run) => {
+      let runToAdd = new Run(run);
+      console.log('run that being sent ', run);
+      let newRunReq = {
+        method: 'POST',
+        url: WPsettings.root + 'wp/v2/posts/',
+        headers: {
+          'X-WP-Nonce': WPsettings.nonce
+        },
+        data: runToAdd
+      }
+
       $http(newRunReq).then((response) => {
         console.log('post was successful, ', response);
-        });
+      });
     };
+
     return {
+      dropdownTime,
+      dropdownMiles,
       addRun,
-      enterView
+      enterView,
     };
 
 

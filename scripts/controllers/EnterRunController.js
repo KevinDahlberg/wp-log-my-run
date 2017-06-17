@@ -17,8 +17,8 @@ function(RunService){
 
   // enterRun.savedRun = UserService.savedRun;
   // enterRun.addRun = DatabaseService.addRun;
-  // enterRun.dropdownTime = UserService.dropdownTime;
-  // enterRun.dropdownMiles = UserService.dropdownMiles;
+  enterRun.dropdownTime = RunService.dropdownTime;
+  enterRun.dropdownMiles = RunService.dropdownMiles;
   // enterRun.user = UserService.user;
 
 }]);
