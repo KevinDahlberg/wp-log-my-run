@@ -45,6 +45,7 @@ function scripts() {
 	if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
 		wp_localize_script('RunService', 'WPsettings', array(
 			'root' => esc_url_raw( rest_url() ),
+			'url' = rest_url( 'wp/v2/posts/1/meta' ),
 			'nonce' => wp_create_nonce( 'wp_rest' ),
 			'current_ID' => get_the_ID(),
 			'session_token' => wp_get_session_token(),

@@ -17,6 +17,26 @@ myApp.factory('RunService', ['$http', '$location',
     let dropdownTime = new Time(TIME);
     let dropdownMiles = new Distance(DISTANCE);
     let newRun = new Run (DEFAULT_RUN);
+    console.log('newRun ', newRun);
+
+    /**
+    * @function prepareRunToEdit
+    * @desc prepares a run for editing (also used for adding a new run)
+    * @param run object
+    * @return a run with split time and distance
+    */
+    let prepareRunToEdit = (run) => {
+      run.splitTime(run.time);
+      run.splitDistance(run.distance);
+      console.log(run);
+    };
+
+    let prepareRunToSend = (run) => {
+      console.log('run in prepare run to send ', run);
+      run.combineTime(run.time);
+      run.combineDistance(run.distance);
+      return run;
+    };
 
 
     /**
@@ -26,14 +46,7 @@ myApp.factory('RunService', ['$http', '$location',
     let enterView = () => {
       $location.path('/enter-run');
     };
-    
-      // meta : [
-      //   {'key' : 'date', 'value' : '06/07/2017'},
-      //   {'key' : 'distance', 'value' : '1.00'},
-      //   {'key' : 'time', 'value' : '00:07:00'},
-      //   {'key' : 'notes', 'value' : ''}
-      // ]
-    };
+
     /**
      * @desc variable that contains the headers for the POST to the WP backend
      * @param url, headers, and data
@@ -46,19 +59,30 @@ myApp.factory('RunService', ['$http', '$location',
     //   },
     //   data: newRun
     // };
+    class RunToSend {
+      constructor (run){
+        // this.post_id = 1;
+        this.meta_
+        // this.runDate = run.date;
+        // thie.runDistance = run.distance;
+        // this.runTime = run.time;
+        // this.runNotes = run.notes;
+      }
+    }
 
-
-    let addRun = (runn) => {
-      let runToAdd = new Run(runn);
-      console.log('run that being sent ', runn);
-      console.log('runToAdd ', runToAdd);
+    let addRun = (run) => {
+      console.log('run that being sent ', run);
+      prepareRunToSend(run);
+      let sampleRun = [
+        {key : 'time', value : '0:01:00' }
+      ]
       let newRunReq = {
         method: 'POST',
-        url: WPsettings.root + 'wp/v2/posts/',
+        url: WPsettings.root + 'wp/v2/posts/1/meta',
         headers: {
           'X-WP-Nonce': WPsettings.nonce
         },
-        data: runToAdd
+        data: sampleRun,
       }
 
       $http(newRunReq).then((response) => {
@@ -69,6 +93,8 @@ myApp.factory('RunService', ['$http', '$location',
     return {
       dropdownTime,
       dropdownMiles,
+      newRun,
+      prepareRunToEdit,
       addRun,
       enterView,
     };

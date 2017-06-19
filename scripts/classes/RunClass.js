@@ -1,3 +1,4 @@
+console.log('run class sourced');
 /**
  * @class Run Class
  * @desc has the properties of the runs, as well as the different formats the app
@@ -6,7 +7,7 @@
  */
 
 class Run {
-  consctructor(run) {
+  constructor(run) {
     console.log('this is the run passing through the constructor, ', run);
     //these are the properties that come back from the DB
     this.id = run.id;
@@ -29,7 +30,7 @@ class Run {
       minutes: dividedArray[1],
       seconds: dividedArray[2]
     };
-    return newTime;
+    this.time = newTime;
   }
 
   /**
@@ -42,9 +43,9 @@ class Run {
     let dividedArray = distance.split('.');
     let newDistance = {
       miles: dividedArray[0],
-      partialMiles: dividedArray[1]
+      partialMiles: '.' + dividedArray[1]
     };
-    return newDistance;
+    this.distance = newDistance;
   }
 
   /**
@@ -68,6 +69,5 @@ class Run {
     distance = distance.miles + distance.partialMiles;
     this.distance = distance;
   }
-
 
 } //end class
