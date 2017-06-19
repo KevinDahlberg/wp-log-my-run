@@ -16,6 +16,7 @@ myApp.factory('RunService', ['$http', '$location',
      */
     let dropdownTime = new Time(TIME);
     let dropdownMiles = new Distance(DISTANCE);
+    let newRun = new Run (DEFAULT_RUN);
 
 
     /**
@@ -25,15 +26,7 @@ myApp.factory('RunService', ['$http', '$location',
     let enterView = () => {
       $location.path('/enter-run');
     };
-
-    let newRun = {
-      title: 'testing 123',
-      status: 'publish',
-      content: 'some more content',
-      meta: {
-        key: 'time',
-        value: '0'
-      }
+    
       // meta : [
       //   {'key' : 'date', 'value' : '06/07/2017'},
       //   {'key' : 'distance', 'value' : '1.00'},
@@ -55,9 +48,10 @@ myApp.factory('RunService', ['$http', '$location',
     // };
 
 
-    let addRun = (run) => {
-      let runToAdd = new Run(run);
-      console.log('run that being sent ', run);
+    let addRun = (runn) => {
+      let runToAdd = new Run(runn);
+      console.log('run that being sent ', runn);
+      console.log('runToAdd ', runToAdd);
       let newRunReq = {
         method: 'POST',
         url: WPsettings.root + 'wp/v2/posts/',

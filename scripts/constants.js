@@ -18,6 +18,4 @@ const DEFAULT_RUN = {
   distance : '',
   time : '',
   notes : '',
-  parsedDistance : {miles : '0', partialMiles : '.00'},
-  parsedTime : {hours : '0', minutes : '00', seconds : '00'}
 };
