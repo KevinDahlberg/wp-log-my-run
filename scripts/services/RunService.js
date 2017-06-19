@@ -16,15 +16,15 @@ myApp.factory('RunService', ['$http', '$location',
      */
     let dropdownTime = new Time(TIME);
     let dropdownMiles = new Distance(DISTANCE);
-    let newRun = new Run (DEFAULT_RUN);
+    let newRun = new Run(DEFAULT_RUN);
     console.log('newRun ', newRun);
 
     /**
-    * @function prepareRunToEdit
-    * @desc prepares a run for editing (also used for adding a new run)
-    * @param run object
-    * @return a run with split time and distance
-    */
+     * @function prepareRunToEdit
+     * @desc prepares a run for editing (also used for adding a new run)
+     * @param run object
+     * @return a run with split time and distance
+     */
     let prepareRunToEdit = (run) => {
       run.splitTime(run.time);
       run.splitDistance(run.distance);
@@ -60,7 +60,7 @@ myApp.factory('RunService', ['$http', '$location',
     //   data: newRun
     // };
     class RunToSend {
-      constructor (run){
+      constructor(run) {
         // this.post_id = 1;
         this.meta_
         // this.runDate = run.date;
@@ -73,12 +73,16 @@ myApp.factory('RunService', ['$http', '$location',
     let addRun = (run) => {
       console.log('run that being sent ', run);
       prepareRunToSend(run);
-      let sampleRun = [
-        {key : 'time', value : '0:01:00' }
-      ]
+      let sampleRun = {
+        content: 'Not Another Hello World',
+        meta: {
+          key: 'time',
+          value: '0:01:00'
+        }
+      };
       let newRunReq = {
         method: 'POST',
-        url: WPsettings.root + 'wp/v2/posts/1/meta',
+        url: WPsettings.root + 'wp/v2/posts/1/',
         headers: {
           'X-WP-Nonce': WPsettings.nonce
         },
