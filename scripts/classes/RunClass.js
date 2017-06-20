@@ -71,3 +71,17 @@ class Run {
   }
 
 } //end class
+
+class RunToSend extends Run {
+  constructor(run) {
+    this.objectToSend = {
+      title : run.date,
+      meta : {
+        time: run.time,
+        distance: run.distance,
+        date: run.date,
+        notes: run.notes
+      }
+    };
+  }
+}

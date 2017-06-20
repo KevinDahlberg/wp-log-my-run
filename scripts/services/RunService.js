@@ -59,16 +59,7 @@ myApp.factory('RunService', ['$http', '$location',
     //   },
     //   data: newRun
     // };
-    class RunToSend {
-      constructor(run) {
-        // this.post_id = 1;
-        this.meta_
-        // this.runDate = run.date;
-        // thie.runDistance = run.distance;
-        // this.runTime = run.time;
-        // this.runNotes = run.notes;
-      }
-    }
+
 
     let addRun = (run) => {
       console.log('run that being sent ', run);
@@ -76,13 +67,15 @@ myApp.factory('RunService', ['$http', '$location',
       let sampleRun = {
         content: 'Not Another Hello World',
         meta: {
-          key: 'time',
-          value: '0:01:00'
+          time: '0:00:00',
+          distance: '0.00',
+          date: '07/20/2017',
+          notes: ''
         }
       };
       let newRunReq = {
         method: 'POST',
-        url: WPsettings.root + 'wp/v2/posts/1/',
+        url: WPsettings.root + 'wp/v2/posts/',
         headers: {
           'X-WP-Nonce': WPsettings.nonce
         },

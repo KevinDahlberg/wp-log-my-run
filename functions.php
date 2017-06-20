@@ -81,15 +81,23 @@ add_action('init', function(){
   exit;
 });
 
-// function slug_time() {
-//     register_rest_field( 'post',
-//         'time',
-//         array(
-//             'get_callback'    => 'get_time',
-//             'update_callback' => 'update_time',
-//             'schema'          => 'string',
-//         )
-//     );
-// }
-// add_action( 'init', 'slug_time' );
+// The object type. For custom post types, this is 'post';
+// for custom comment types, this is 'comment'. For user meta,
+// this is 'user'.
+$object_type = 'post';
+$args1 = array( // Validate and sanitize the meta value.
+    // Note: currently (4.7) one of 'string', 'boolean', 'integer',
+    // 'number' must be used as 'type'. The default is 'string'.
+    'type'         => 'string',
+    // Shown in the schema for the meta key.
+    'description'  => 'A meta key associated with a string meta value.',
+    // Return a single value of the type.
+    'single'       => true,
+    // Show in the WP REST API response. Default: false.
+    'show_in_rest' => true,
+);
+register_meta( $object_type, 'time', $args1 );
+register_meta( $object_type, 'distance', $args1);
+register_meta( $object_type, 'date', $args1);
+register_meta( $object_type, 'notes', $args1);
 ?>
