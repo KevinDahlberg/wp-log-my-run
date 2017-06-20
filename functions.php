@@ -49,6 +49,7 @@ function scripts() {
 			'nonce' => wp_create_nonce( 'wp_rest' ),
 			'current_ID' => get_the_ID(),
 			'session_token' => wp_get_session_token(),
+			'user_ID' => get_current_user_id()
 		));
 	};
 
