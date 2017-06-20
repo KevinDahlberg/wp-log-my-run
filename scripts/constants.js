@@ -15,7 +15,7 @@ const TIME = {
 
 const DEFAULT_RUN = {
   id : '',
-  date : moment().format('MM/DD/YYYY'),
+  date : moment().format('MM/DD/YYYY HH:mm'),
   distance : '0.00',
   time : '0:00:00',
   notes : '',

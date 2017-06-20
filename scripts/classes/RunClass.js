@@ -1,4 +1,8 @@
-console.log('run class sourced');
+/**
+ * @desc contains the Run Class and its two subclasses: RunToSend and RunToEdit
+ */
+
+
 /**
  * @class Run Class
  * @desc has the properties of the runs, as well as the different formats the app
@@ -49,39 +53,73 @@ class Run {
   }
 
   /**
-  * @method Combine Time
-  * @desc combines time into something that is readable on the DOM
-  * @param time object that contains hours, minutes, and seconds
-  * @return an item that reads hours:minutes:seconds (0:00:00)
-  */
-  combineTime (time) {
+   * @method Combine Time
+   * @desc combines time into something that is readable on the DOM
+   * @param time object that contains hours, minutes, and seconds
+   * @return an item that reads hours:minutes:seconds (0:00:00)
+   */
+  combineTime(time) {
     time = time.hours + ':' + time.minutes + ':' + time.seconds;
     this.time = time;
   }
 
   /**
-  * @method Combine distance
-  * @desc combines the different parts of the distance into something readable on the DOM
-  * @param distance object that contains distance.miles and distance.partial miles.
-  * @return item that reads miles.partialMiles (0.00)
-  */
-  combineDistance (distance) {
+   * @method Combine distance
+   * @desc combines the different parts of the distance into something readable on the DOM
+   * @param distance object that contains distance.miles and distance.partial miles.
+   * @return item that reads miles.partialMiles (0.00)
+   */
+  combineDistance(distance) {
     distance = distance.miles + distance.partialMiles;
     this.distance = distance;
   }
 
 } //end class
 
+/**
+ * @class RunToSend
+ * @desc prepares a run for sending, extends the run class
+ * @param run object
+ * @return object that is formatted correctly for sending
+ */
 class RunToSend extends Run {
   constructor(run) {
+    super(run);
+    super.combineDistance(run.distance);
+    super.combineTime(run.time);
     this.objectToSend = {
-      title : run.date,
-      meta : {
-        time: run.time,
-        distance: run.distance,
-        date: run.date,
-        notes: run.notes
+      title: moment(this.date).format('MM/DD/YYYY HH:mm'),
+      status: 'publish',
+      meta: {
+        time: this.time,
+        distance: this.distance,
+        date: moment(this.date).format('MM/DD/YYYY'),
+        notes: this.notes
       }
     };
+  }
+}
+
+/**
+ * @class RunToEdit
+ * @desc prepares a run for editing, extends the run class
+ * @param run object
+ * @return object that is formatted correctly for editing
+ */
+class RunToEdit extends Run {
+  constructor(run) {
+    super(run);
+    this.prepareRunToEdit(run);
+  }
+
+  /**
+   * @method prepareRunToEdit
+   * @desc prepares a run for editing (also used for adding a new run)
+   * @param run object
+   * @return a run with split time and distance
+   */
+  prepareRunToEdit(run) {
+    super.splitTime(run.time);
+    super.splitDistance(run.distance);
   }
 }

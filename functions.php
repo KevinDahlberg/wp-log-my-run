@@ -32,6 +32,7 @@ function scripts() {
 	//classes
 	wp_enqueue_script('RunClass', get_template_directory_uri() . '/scripts/classes/RunClass.js');
 	wp_enqueue_script('DropdownClass', get_template_directory_uri() . '/scripts/classes/DropdownClass.js');
+	wp_enqueue_script('RequestClass', get_template_directory_uri() . '/scripts/classes/RequestClass.js');
 
 	//load services
 	wp_enqueue_script('RunService', get_template_directory_uri() .'/scripts/services/RunService.js');
