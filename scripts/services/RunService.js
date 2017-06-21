@@ -20,6 +20,7 @@ myApp.factory('RunService', ['$http', '$location',
     let dropdownMiles = new Distance(DISTANCE);
 
     let newRun = new Run(DEFAULT_RUN);
+    let currentUser = new User(WPsettings);
 
     /**
      * @function getRun

@@ -7,10 +7,11 @@
 
 class User {
   constructor(user) {
-    this.userId = 'user.user_ID';
+    this.userId = user.user_ID;
     this.runArray = [];
     this.summary = {weeks : [], months : [], years : []};
     this.currentDateRange = moment().weekday(0).format('MM/DD/YYYY') + ' to ' + moment().weekday(6).format('MM/DD/YYYY');
+    this.monthSum([{date: "6/20/2017", distance: "1.00"}, {date: "6/20/2017", distance: "1.00"}]);
   }
 
   /**
@@ -55,6 +56,48 @@ class User {
     this.summery.yearSum = this.arraySum(yearArray);
   }
 
+  /**
+  * @method yearSum
+  * @desc adds up the mileage for the year
+  * @param all of the runs
+  * @return array with {object} - {key} year - YYYY {value} number
+  * connected to month
+  */
+
+  /**
+  * @method monthSum
+  * @desc adds up the mileage of each month
+  * @param array of runs
+  * @return array with {object} - {key} month/year - MM/YYYY {value} number
+  * connected to year
+  */
+  monthSum (runArray) {
+    let monthArray = [];
+    runArray.forEach((run) => {
+      let month = {
+        monthDate : moment(run.date).format('MM/YYYY'),
+        monthDistance : run.distance
+      };
+      monthArray.push(month);
+      console.log(monthArray);
+    });
+    let totalMonthArray = [];
+    monthArray.forEach(newMonth => {
+      if (totalMonthArray.monthDate.includes(newMonth.monthDate)) {
+        month.distance += newMonth.distance;
+      } else {
+        totalMonthArray.push(newMonth);
+      }
+    });
+    console.log('month totals ', totalMonthArray)
+  }
+
+  /**
+  * @method weekSum
+  * @desc adds up the mileage of each week
+  * @param array of runs
+  * @return array with {object} - {key} week ww {value} number
+  * not connected to month or year, because weeks overlap
 
   /**
   * @method array sum
