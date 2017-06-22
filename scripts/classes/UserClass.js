@@ -26,15 +26,27 @@ class User {
    * @param parameters that are sent in the GET include information from the user session.
    * @return an array of Run objects is created when the items come back from the DB
    */
-  populateRuns(object) {
+  populateRuns(array) {
     this.runArray.length = 0;
-    for (let item of object) {
-      let run = new Run(item);
+    for (let item of array) {
+      item.meta.id = item.id
+      let run = new Run(item.meta);
       this.runArray.push(run);
     }
+    console.log(this.runArray);
   }
 
-
+  /**
+  * @method populateSummary
+  * @desc populates the summary object by calling the SUM methods
+  * @param runArray
+  * @return summary object is populated
+  */
+  populateSummary (runArray) {
+    yearSum(runArray);
+    monthSum(runArray);
+    weekSum(runArray);
+  }
   /**
    * @method yearSum
    * @desc adds up the mileage for the year
@@ -83,7 +95,7 @@ class User {
     });
     this.summary.week = arraySum(weekDistance);
   }
-  
+
   /**
    * @method array sum
    * @desc adds up the numbers of an array

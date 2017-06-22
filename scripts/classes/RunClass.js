@@ -18,7 +18,7 @@ class Run {
     this.date = run.date;
     this.time = run.time;
     this.distance = run.distance;
-    this.dateRange = {beggining : moment(run.date).weekday(0).format('MM/DD/YYYY'), end : moment(run.date).weekday(6).format('MM/DD/YYYY')};
+    this.dateRange = {beggining : moment(this.date).weekday(0).format('MM/DD/YYYY'), end : moment(this.date).weekday(6).format('MM/DD/YYYY')};
   }
 
   /**

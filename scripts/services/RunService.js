@@ -30,7 +30,7 @@ myApp.factory('RunService', ['$http', '$location',
      */
     let getRun = (user_ID) => {
       $http.get(WPsettings.root + 'wp/v2/posts?filter[author]=' + user_ID).then((response) => {
-        console.log('in the get route is ', response);
+        currentUser.populateRuns(response.data);
       });
     };
 
