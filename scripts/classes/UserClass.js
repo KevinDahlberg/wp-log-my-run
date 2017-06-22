@@ -1,114 +1,99 @@
 /**
-* @class USER
-* @desc Has the information for the user.  Created on login
-* @param user {object} that has a user_ID (and maybe the username later)
-* @return userId, runArray, summary object, currentDateRange
-*/
+ * @class USER
+ * @desc Has the information for the user.  Created on login
+ * @param user {object} that has a user_ID (and maybe the username later)
+ * @return userId, runArray, summary object, currentDateRange
+ */
 
 class User {
   constructor(user) {
     this.userId = user.user_ID;
     this.runArray = [];
-    this.summary = {weeks : [], months : [], years : []};
-    this.currentDateRange = moment().weekday(0).format('MM/DD/YYYY') + ' to ' + moment().weekday(6).format('MM/DD/YYYY');
-    this.monthSum([{date: "6/20/2017", distance: "1.00"}, {date: "6/20/2017", distance: "1.00"}]);
+    this.summary = {
+      week: '',
+      month: '',
+      year: ''
+    };
+    this.currentDateRange = {
+      beginning: moment().weekday(0).format('MM/DD/YYYY'),
+      end: moment().weekday(6).format('MM/DD/YYYY')
+    };
   }
 
   /**
-  * @method PopulateRuns
-  * @desc method called after the user logs in to GET all of the runs
-  * @param parameters that are sent in the GET include information from the user session.
-  * @return an array of Run objects is created when the items come back from the DB
-  */
-  populateRuns (object) {
+   * @method PopulateRuns
+   * @desc method called after the user logs in to GET all of the runs
+   * @param parameters that are sent in the GET include information from the user session.
+   * @return an array of Run objects is created when the items come back from the DB
+   */
+  populateRuns(object) {
     this.runArray.length = 0;
-    for (let item of object){
-      let run = new Run (item);
+    for (let item of object) {
+      let run = new Run(item);
       this.runArray.push(run);
     }
   }
 
+
   /**
-  * @method populateSummary
-  * @desc takes in the current date and only shows the information for that week
-  * @param today's date
-  * @return the runs for the week of that date.
-  * function needs to get the information from the beginning of the week (the week number)
-  * from the date.
-  */
-  populateSummary (array) {
-    let weekArray = [];
-    let yearArray = [];
-    let monthArray = [];
-    for (let run of array){
-      if (run.date.year === moment().format('YYYY')){
-        yearArray.push(run.distance);
-        if (run.date.month === moment().format('MM')){
-          monthArray.push(run.distance);
-        }
+   * @method yearSum
+   * @desc adds up the mileage for the year
+   * @param all of the runs, compared against the beginning of the week of the current date range
+   * @return sum for the year
+   */
+  yearSum(runArray) {
+    let yearDistance = []
+    runArray.forEach(run => {
+      if (moment(run.currentDateRange.beginning).format('YYYY') === moment(this.currentDateRange.beginning).format('YYYY')) {
+        yearDistance.push(run.distance);
       }
-      if (run.date.dateRange === this.currentDateRange){
-        weekArray.push(run.distance);
-      }
-    }
-    this.summery.weekSum = this.arraySum(weekArray);
-    this.summery.monthSum = this.arraySum(monthArray);
-    this.summery.yearSum = this.arraySum(yearArray);
+    });
+    this.summary.year = arraySum(yearDistance);
   }
 
   /**
-  * @method yearSum
-  * @desc adds up the mileage for the year
-  * @param all of the runs
-  * @return array with {object} - {key} year - YYYY {value} number
-  * connected to month
-  */
-
-  /**
-  * @method monthSum
-  * @desc adds up the mileage of each month
-  * @param array of runs
-  * @return array with {object} - {key} month/year - MM/YYYY {value} number
-  * connected to year
-  */
-  monthSum (runArray) {
-    let monthArray = [];
-    runArray.forEach((run) => {
-      let month = {
-        monthDate : moment(run.date).format('MM/YYYY'),
-        monthDistance : run.distance
-      };
-      monthArray.push(month);
-      console.log(monthArray);
-    });
-    let totalMonthArray = [];
-    monthArray.forEach(newMonth => {
-      if (totalMonthArray.monthDate.includes(newMonth.monthDate)) {
-        month.distance += newMonth.distance;
-      } else {
-        totalMonthArray.push(newMonth);
+   * @method monthSum
+   * @desc adds up the mileage of the current month
+   * @param array of runs
+   * @return array with {object} - {key} month/year - MM/YYYY {value} number
+   * connected to year
+   */
+  monthSum(runArray) {
+    let monthDistance = []
+    runArray.forEach(run => {
+      if (moment(run.currentDateRange.beginning).format('MM/YYYY') === moment(this.currentDateRange.beginning).format('MM/YYYY')) {
+        monthDistance.push(run.distance);
       }
     });
-    console.log('month totals ', totalMonthArray)
+    this.summary.month = arraySum(monthDistance);
   }
 
   /**
-  * @method weekSum
-  * @desc adds up the mileage of each week
-  * @param array of runs
-  * @return array with {object} - {key} week ww {value} number
-  * not connected to month or year, because weeks overlap
-
+   * @method weekSum
+   * @desc adds up the mileage of the current week
+   * @param array of runs
+   * @return sum of the current week
+   */
+  weekSum(runArray) {
+    let monthDistance = []
+    runArray.forEach(run => {
+      if (moment(run.currentDateRange.beginning).format('MM/DD/YYYY') === moment(this.currentDateRange.beginning).format('MM/DD/YYYY')) {
+        monthDistance.push(run.distance);
+      }
+    });
+    this.summary.week = arraySum(weekDistance);
+  }
+  
   /**
-  * @method array sum
-  * @desc adds up the numbers of an array
-  * @param an array of numbers
-  * @return the sum of the numbers of the array
-  */
-  arraySum (array) {
+   * @method array sum
+   * @desc adds up the numbers of an array
+   * @param an array of numbers
+   * @return the sum of the numbers of the array
+   */
+  arraySum(array) {
     let sum = 0;
-    for (let num of array){
-      sum += parseFloat (num);
+    for (let num of array) {
+      sum += parseFloat(num);
     }
     return sum;
   }
