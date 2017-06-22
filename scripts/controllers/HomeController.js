@@ -10,6 +10,9 @@ function(RunService){
   let home = this;
 
   home.enterView = RunService.enterView;
+  home.user = RunService.currentUser;
+
+  console.log(home.user);
   //
   // showRun.saveRun = UserService.saveRun;
   // showRun.enterView = UserService.enterView;

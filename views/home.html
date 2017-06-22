@@ -1,15 +1,15 @@
 <md-content class="container-input" layout="column" layout-align="start center">
   <div layout="row">
-    <md-select class="date-select" ng-model="showRun.user.currentDateRange" ng-change="showRun.user.populateSummery(showRun.user.runArray)" aria-label="run history">
-      <md-option aria-label="run history" ng-repeat="run in showRun.user.runArray | unique" value="{{run}}">{{run}}
+    <md-select class="date-select" ng-model="home.user.currentDateRange" ng-change="home.user.populateSummery(home.user.runArray)" aria-label="run history">
+      <md-option aria-label="run history" ng-repeat="run in home.user.runArray | unique" value="{{run}}">{{run}}
       </md-option>
     </md-select>
   </div>
   <div layout="row">
     <div layout="column" layout-align="start">
-      <md-card class="card run-history" ng-repeat="run in showRun.user.runArray" ng-if="run.date.dateRange === showRun.user.currentDateRange" ng-click="showRun.saveRun(run);">
+      <md-card class="card run-history" ng-repeat="run in home.user.runArray" ng-click="home.saveRun(run);">
         <md-card-title-text>
-          <span class="md-subhead run-item"><span class="md-subhead run-date">{{run.date.shortDate}}</span>{{run.distance}} mi</span>
+          <span class="md-subhead run-item"><span class="md-subhead run-date">{{run.date}}</span>{{run.distance}} mi</span>
         </md-card-title-text>
       </md-card>
     </div>
@@ -17,9 +17,9 @@
     <div layout="column" layout-align="space-between center">
       <div layout="row">
         <md-card class="card">
-          <span class="md-subhead summary-title">Week: <span class="summary-item">{{showRun.user.summery.weekSum}} miles</span></span>
-          <span class="md-subhead summary-title">{{showRun.user.currentMonth}}: <span class="summary-item">{{showRun.user.summery.monthSum}} miles</span></span>
-          <span class="md-subhead summary-title">{{showRun.user.currentYear}}: <span class="summary-item">{{showRun.user.summery.yearSum}} miles</span></span>
+          <span class="md-subhead summary-title">Week: <span class="summary-item">{{home.user.summary.weekSum}} miles</span></span>
+          <span class="md-subhead summary-title">{{home.user.currentMonth}}: <span class="summary-item">{{home.user.summary.monthSum}} miles</span></span>
+          <span class="md-subhead summary-title">{{home.user.currentYear}}: <span class="summary-item">{{home.user.summary.yearSum}} miles</span></span>
         </md-card>
       </div>
     </div>

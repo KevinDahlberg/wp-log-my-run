@@ -100,6 +100,7 @@ myApp.factory('RunService', ['$http', '$location',
       newRun,
       addRun,
       enterView,
+      currentUser
     };
 
 
