@@ -1,6 +1,6 @@
 <md-content class="container-input" layout="column" layout-align="start center">
   <div layout="row">
-    <md-select class="date-select" ng-model="home.user.currentDateRange" ng-change="home.user.populateSummery(home.user.runArray)" aria-label="run history">
+    <md-select class="date-select" ng-model="home.user.currentDateRange.beginning" ng-change="home.user.populateSummery(home.user.runArray)" aria-label="run history">
       <md-option aria-label="run history" ng-repeat="run in home.user.runArray | unique" value="{{run}}">{{run}}
       </md-option>
     </md-select>

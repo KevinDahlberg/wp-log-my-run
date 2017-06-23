@@ -17,5 +17,5 @@ function(RunService){
   enterRun.newRun = new RunToEdit(RunService.newRun);
   enterRun.dropdownTime = RunService.dropdownTime;
   enterRun.dropdownMiles = RunService.dropdownMiles;
-
+  enterRun.editing = false;
 }]);

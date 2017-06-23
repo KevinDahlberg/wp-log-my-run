@@ -21,7 +21,18 @@ myApp.factory('RunService', ['$http', '$location',
 
     let newRun = new Run(DEFAULT_RUN);
     let currentUser = new User(WPsettings);
+    let savedRun = {};
 
+    /**
+     * @function saveRun
+     * @desc copys the run to edit to savedRun
+     * @param run
+     * @return saved run is the run to edit
+     */
+    let saveRun = (run) => {
+      angular.copy(run, savedRun);
+      $location.path('/view-run');
+    }
     /**
      * @function getRun
      * @desc gets runs by a particular user from the DB
@@ -52,39 +63,39 @@ myApp.factory('RunService', ['$http', '$location',
     };
 
     /**
-    * @function editRun
-    * @desc edits a run in the DB
-    * @param
-    * @return
-    */
+     * @function editRun
+     * @desc edits a run in the DB
+     * @param
+     * @return
+     */
 
     /**
-    * @function deleteRun
-    * @desc deletes a run from the DB
-    * @param
-    * @return
-    */
+     * @function deleteRun
+     * @desc deletes a run from the DB
+     * @param
+     * @return
+     */
 
     /**
-    * @function addUser
-    * @desc adds user to the DB
-    * @param
-    * @return
-    */
+     * @function addUser
+     * @desc adds user to the DB
+     * @param
+     * @return
+     */
 
     /**
-    * @function editUser
-    * @desc edits user in the DB
-    * @param
-    * @return
-    */
+     * @function editUser
+     * @desc edits user in the DB
+     * @param
+     * @return
+     */
 
     /**
-    * @function deleteUser
-    * @desc deletes user from the DB
-    * @param
-    * @return
-    */
+     * @function deleteUser
+     * @desc deletes user from the DB
+     * @param
+     * @return
+     */
 
     /**
      * @function enter view
@@ -100,7 +111,9 @@ myApp.factory('RunService', ['$http', '$location',
       newRun,
       addRun,
       enterView,
-      currentUser
+      currentUser,
+      saveRun,
+      savedRun
     };
 
 
