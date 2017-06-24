@@ -37,12 +37,12 @@ class User {
   }
 
   /**
-  * @method populateSummary
-  * @desc populates the summary object by calling the SUM methods
-  * @param runArray
-  * @return summary object is populated
-  */
-  populateSummary (runArray) {
+   * @method populateSummary
+   * @desc populates the summary object by calling the SUM methods
+   * @param runArray
+   * @return summary object is populated
+   */
+  populateSummary(runArray) {
     yearSum(runArray);
     monthSum(runArray);
     weekSum(runArray);

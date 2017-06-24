@@ -30,6 +30,10 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngS
           templateUrl: localized.partials + 'enter_run.html',
           controller: 'EnterRunController as enterRun'
         })
+        .when('/edit-run', {
+          templateUrl: localized.partials + 'enter_run.html',
+          controller: 'EnterRunController as enterRun'
+        })
         .when('/view-run', {
           templateUrl: localized.partials + 'view_run.html',
           controller: 'ViewRunController as viewRun'

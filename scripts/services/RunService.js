@@ -19,20 +19,45 @@ myApp.factory('RunService', ['$http', '$location',
     let dropdownTime = new Time(TIME);
     let dropdownMiles = new Distance(DISTANCE);
 
-    let newRun = new Run(DEFAULT_RUN);
     let currentUser = new User(WPsettings);
     let savedRun = {};
+
+    let editingRun = false
 
     /**
      * @function saveRun
      * @desc copys the run to edit to savedRun
      * @param run
-     * @return saved run is the run to edit
+     * @return saved run is the run to edit, changes the view to view-run
      */
     let saveRun = (run) => {
       angular.copy(run, savedRun);
       $location.path('/view-run');
     }
+
+    /**
+     * @function runEdit
+     * @desc changes view to edit run screen
+     * @param saved run
+     * @return change to screen where run is being edited
+     */
+    let runEdit = () => {
+      editingRun = true;
+      $location.path('/edit-run');
+    };
+
+    /**
+     * @function runCreate
+     * @desc sets up enter_run view for creating a new run
+     * @param savedRun
+     * @return transfers view to enter_run, copies default run to savedRun
+     */
+    let runCreate = () => {
+      editingRun = false;
+      angular.copy(DEFAULT_RUN, savedRun);
+      $location.path('/enter-run');
+    };
+
     /**
      * @function getRun
      * @desc gets runs by a particular user from the DB
@@ -97,20 +122,17 @@ myApp.factory('RunService', ['$http', '$location',
      * @return
      */
 
-    /**
-     * @function enter view
-     * @desc changes the view to the enter_run view
-     */
-    let enterView = () => {
-      $location.path('/enter-run');
-    };
-
     return {
+      //functions
+      runEdit,
+      runCreate,
+
       dropdownTime,
       dropdownMiles,
+
       newRun,
       addRun,
-      enterView,
+
       currentUser,
       saveRun,
       savedRun
