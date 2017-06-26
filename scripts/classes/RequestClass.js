@@ -17,3 +17,18 @@ class PostRequest {
     this.data = dataToSend;
   }
 }
+
+/**
+* @class PutRequest
+* @desc has the information for a put request
+*/
+class PutRequest {
+  constructor (dataToSend){
+    this.method = 'PUT';
+    this.url = WPsettings.root + 'wp/v2/posts/' + dataToSend.id;
+    this.headers = {
+      'X-WP-Nonce': WPsettings.nonce
+    };
+    this.data = dataToSend;
+  }
+}

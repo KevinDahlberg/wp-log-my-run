@@ -93,6 +93,14 @@ myApp.factory('RunService', ['$http', '$location',
      * @param
      * @return
      */
+     let editRun = (run) => {
+       let runData = new RunToSend (run);
+       let updateRunReq = new PutRequest(runData.objectToSend);
+
+       $http(updateRunReq).then(response => {
+         console.log('put was successful, ', response);
+       });
+     } ;
 
     /**
      * @function deleteRun

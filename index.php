@@ -14,7 +14,7 @@
 </head>
 <body>
   <?php get_header() ?>
-  <!-- <ng-include src="'<?php echo get_stylesheet_directory_uri() ?>/views/partials/header.html'"></ng-include> -->
+
   <?php if( is_user_logged_in() && current_user_can( 'edit_posts' ) ) : ?>
 
     <div class="container">
