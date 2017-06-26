@@ -27,5 +27,12 @@ myApp.controller('EnterRunController', ['RunService',
      */
     enterRun.addRun = RunService.addRun;
 
+    /**
+    * @function runAddOrEdit
+    * @desc evaluates whether a run is being edited or not
+    * @param run {object} and calls on editingRun
+    * @return calls editRun or addRun with run
+    */
+    enterRun.runAddOrEdit = RunService.runAddOrEdit
   }
 ]);

@@ -25,6 +25,20 @@ myApp.factory('RunService', ['$http', '$location',
     let editingRun = false
 
     /**
+    * @function runAddOrEdit
+    * @desc evaluates whether a run is being edited or not
+    * @param run {object} and calls on editingRun
+    * @return calls editRun or addRun with run
+    */
+    let runAddOrEdit = (run) => {
+      if (editingRun) {
+        editRun(run);
+      } else {
+        addRun(run);
+      }
+    };
+
+    /**
      * @function saveRun
      * @desc copys the run to edit to savedRun
      * @param run
@@ -83,7 +97,8 @@ myApp.factory('RunService', ['$http', '$location',
       let newRunReq = new PostRequest(runData.objectToSend);
 
       $http(newRunReq).then((response) => {
-        console.log('post was successful, ', response);
+        getRun(WPsettings.user_ID);
+        $location.path('/home');
       });
     };
 
@@ -95,10 +110,11 @@ myApp.factory('RunService', ['$http', '$location',
      */
      let editRun = (run) => {
        let runData = new RunToSend (run);
-       let updateRunReq = new PutRequest(runData.objectToSend);
-
+       let updateRunReq = new PutRequest(runData.objectToSend, runData.id);
+       console.log('runData in put request is ', runData);
        $http(updateRunReq).then(response => {
-         console.log('put was successful, ', response);
+         getRun(WPsettings.user_ID);
+         $location.path('/home');
        });
      } ;
 
@@ -134,11 +150,11 @@ myApp.factory('RunService', ['$http', '$location',
       //functions
       runEdit,
       runCreate,
+      runAddOrEdit,
 
       dropdownTime,
       dropdownMiles,
 
-      newRun,
       addRun,
 
       currentUser,
