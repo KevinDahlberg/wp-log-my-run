@@ -25,11 +25,11 @@ myApp.factory('RunService', ['$http', '$location',
     let editingRun = false
 
     /**
-    * @function runAddOrEdit
-    * @desc evaluates whether a run is being edited or not
-    * @param run {object} and calls on editingRun
-    * @return calls editRun or addRun with run
-    */
+     * @function runAddOrEdit
+     * @desc evaluates whether a run is being edited or not
+     * @param run {object} and calls on editingRun
+     * @return calls editRun or addRun with run
+     */
     let runAddOrEdit = (run) => {
       if (editingRun) {
         editRun(run);
@@ -108,22 +108,29 @@ myApp.factory('RunService', ['$http', '$location',
      * @param
      * @return
      */
-     let editRun = (run) => {
-       let runData = new RunToSend (run);
-       let updateRunReq = new PutRequest(runData.objectToSend, runData.id);
-       console.log('runData in put request is ', runData);
-       $http(updateRunReq).then(response => {
-         getRun(WPsettings.user_ID);
-         $location.path('/home');
-       });
-     } ;
+    let editRun = (run) => {
+      let runData = new RunToSend(run);
+      let updateRunReq = new PutRequest(runData.objectToSend, runData.id);
+      console.log('runData in put request is ', runData);
+      $http(updateRunReq).then(response => {
+        getRun(WPsettings.user_ID);
+        $location.path('/home');
+      });
+    };
 
     /**
      * @function deleteRun
      * @desc deletes a run from the DB
-     * @param
-     * @return
+     * @param run object
+     * @return deletes post from DB
      */
+    let deleteRun = (run) => {
+      let deleteRunReq = new DeleteRequest(run.id);
+      $http(deleteRunReq).then(response => {
+        getRun(WPsettings.user_ID);
+        $location.path('/home');
+      });
+    };
 
     /**
      * @function addUser
@@ -151,6 +158,9 @@ myApp.factory('RunService', ['$http', '$location',
       runEdit,
       runCreate,
       runAddOrEdit,
+
+      //DB Calls
+      deleteRun,
 
       dropdownTime,
       dropdownMiles,
