@@ -12,7 +12,6 @@
 
 class Run {
   constructor(run) {
-    console.log('this is the run passing through the constructor, ', run);
     //these are the properties that come back from the DB
     this.id = run.id;
     this.date = run.date;
@@ -73,8 +72,7 @@ class Run {
     distance = distance.miles + distance.partialMiles;
     this.distance = distance;
   }
-
-} //end class
+}
 
 /**
  * @class RunToSend

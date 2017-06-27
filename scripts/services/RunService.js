@@ -1,16 +1,6 @@
-myApp.factory('RunService', ['$http', '$location',
-  function($http, $location) {
+myApp.factory('RunService', ['$location',
+  function($location) {
     let RunService = this;
-
-    console.log('The REST root is ', WPsettings.root);
-
-    console.log('The REST nonce is ', WPsettings.nonce);
-
-    console.log('The REST ID is ', WPsettings.current_ID);
-
-    console.log('Session Token is ', WPsettings.session_token);
-
-    console.log('User ID is ', WPsettings.user_ID);
 
     /**
      * @desc creates objects that are used to populate the dropdowns in the add
@@ -19,24 +9,16 @@ myApp.factory('RunService', ['$http', '$location',
     let dropdownTime = new Time(TIME);
     let dropdownMiles = new Distance(DISTANCE);
 
+    /**
+    * @desc objects for the application
+    */
     let currentUser = new User(WPsettings);
     let savedRun = {};
 
-    let editingRun = false
-
     /**
-     * @function runAddOrEdit
-     * @desc evaluates whether a run is being edited or not
-     * @param run {object} and calls on editingRun
-     * @return calls editRun or addRun with run
-     */
-    let runAddOrEdit = (run) => {
-      if (editingRun) {
-        editRun(run);
-      } else {
-        addRun(run);
-      }
-    };
+    * @desc tells the app if you are adding or editing runs
+    */
+    let editingRun = false
 
     /**
      * @function saveRun
@@ -73,66 +55,6 @@ myApp.factory('RunService', ['$http', '$location',
     };
 
     /**
-     * @function getRun
-     * @desc gets runs by a particular user from the DB
-     * @param user_ID
-     * @return all runs by that user
-     */
-    let getRun = (user_ID) => {
-      $http.get(WPsettings.root + 'wp/v2/posts?filter[author]=' + user_ID).then((response) => {
-        currentUser.populateRuns(response.data);
-      });
-    };
-
-    getRun(WPsettings.user_ID);
-
-    /**
-     * @function addRun
-     * @desc adds a run to the Database
-     * @param run from enter view
-     * @return response is the object that was sent.
-     */
-    let addRun = (run) => {
-      let runData = new RunToSend(run);
-      let newRunReq = new PostRequest(runData.objectToSend);
-
-      $http(newRunReq).then((response) => {
-        getRun(WPsettings.user_ID);
-        $location.path('/home');
-      });
-    };
-
-    /**
-     * @function editRun
-     * @desc edits a run in the DB
-     * @param
-     * @return
-     */
-    let editRun = (run) => {
-      let runData = new RunToSend(run);
-      let updateRunReq = new PutRequest(runData.objectToSend, runData.id);
-      console.log('runData in put request is ', runData);
-      $http(updateRunReq).then(response => {
-        getRun(WPsettings.user_ID);
-        $location.path('/home');
-      });
-    };
-
-    /**
-     * @function deleteRun
-     * @desc deletes a run from the DB
-     * @param run object
-     * @return deletes post from DB
-     */
-    let deleteRun = (run) => {
-      let deleteRunReq = new DeleteRequest(run.id);
-      $http(deleteRunReq).then(response => {
-        getRun(WPsettings.user_ID);
-        $location.path('/home');
-      });
-    };
-
-    /**
      * @function addUser
      * @desc adds user to the DB
      * @param
@@ -157,21 +79,15 @@ myApp.factory('RunService', ['$http', '$location',
       //functions
       runEdit,
       runCreate,
-      runAddOrEdit,
+      saveRun,
 
-      //DB Calls
-      deleteRun,
-
+      //Variables
       dropdownTime,
       dropdownMiles,
-
-      addRun,
-
       currentUser,
-      saveRun,
-      savedRun
+      savedRun,
+      editingRun
     };
-
 
   }
 ]);

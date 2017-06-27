@@ -37,6 +37,7 @@ function scripts() {
 
 	//load services
 	wp_enqueue_script('RunService', get_template_directory_uri() .'/scripts/services/RunService.js');
+	wp_enqueue_script('DatabaseService', get_template_directory_uri() .'/scripts/services/DatabaseService.js');
 
 	wp_localize_script( 'RunService', 'login_object', array(
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),

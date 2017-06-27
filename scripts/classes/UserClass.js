@@ -29,11 +29,10 @@ class User {
   populateRuns(array) {
     this.runArray.length = 0;
     for (let item of array) {
-      item.meta.id = item.id
+      item.meta.id = item.id;
       let run = new Run(item.meta);
       this.runArray.push(run);
     }
-    console.log(this.runArray);
   }
 
   /**

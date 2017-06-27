@@ -5,8 +5,8 @@
  * @return shows all of the completed runs
  */
 
-myApp.controller('HomeController', ['RunService',
-  function(RunService) {
+myApp.controller('HomeController', ['RunService', 'DatabaseService',
+  function(RunService, DatabaseService) {
     let home = this;
 
     home.user = RunService.currentUser;
@@ -26,5 +26,15 @@ myApp.controller('HomeController', ['RunService',
      * @return transfers view to enter_run, copies default run to savedRun
      */
     home.runCreate = RunService.runCreate;
+
+    /**
+     * @function getRun
+     * @desc gets runs by a particular user from the DB
+     * @param user_ID
+     * @return all runs by that user
+     */
+    home.getRun = DatabaseService.getRun;
+
+    home.getRun(WPsettings.user_ID);
   }
 ]);

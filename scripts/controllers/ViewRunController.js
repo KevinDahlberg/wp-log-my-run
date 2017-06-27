@@ -1,5 +1,5 @@
-myApp.controller('ViewRunController', ['RunService',
-  function(RunService) {
+myApp.controller('ViewRunController', ['RunService', 'DatabaseService',
+  function(RunService, DatabaseService) {
     let viewRun = this;
 
     viewRun.savedRun = RunService.savedRun;
@@ -18,6 +18,6 @@ myApp.controller('ViewRunController', ['RunService',
      * @param run object
      * @return deletes post from DB
      */
-    viewRun.deleteRun = RunService.deleteRun;
+    viewRun.deleteRun = DatabaseService.deleteRun;
   }
 ]);
