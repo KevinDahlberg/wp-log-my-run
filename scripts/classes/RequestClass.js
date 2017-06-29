@@ -46,3 +46,18 @@ class DeleteRequest {
     };
   }
 }
+
+/**
+  * @class CreateUserRequest
+  * @desc information to add user
+  */
+  class CreateUserRequest {
+    constructor (user) {
+      this.method = 'POST';
+      this.url = WPsettings.root + 'wp/v2/users';
+      this.headers = {
+        'X-WP-Nonce': WPsettings.nonce
+      };
+      this.data = user;
+    }
+  }
