@@ -61,6 +61,14 @@ myApp.factory('RunService', ['$location',
      * @return
      */
 
+    let addUser = (user) => {
+      let newUser = new NewUser (user);
+      let newUserReq = new CreateUserRequest (newUser);
+      $http(newUserReq).then((response) => {
+        console.log(response);
+        $location.path('/login');
+    }
+
     /**
      * @function editUser
      * @desc edits user in the DB
