@@ -61,3 +61,19 @@ class DeleteRequest {
       this.data = user;
     }
   }
+
+  /**
+  * @class UpdateUserRequest
+  * @desc prepares date to update the user
+  */
+  class UpdateUserRequest {
+    constructor (user) {
+      this.methos = 'PUT';
+      this.url = WPsettings.root + 'wp/v2/users' + user.userId;
+      this.headers = {
+        'X-WP-Nonce': WPsettings.nonce
+      };
+      this.data = user;
+    }
+  }
+  

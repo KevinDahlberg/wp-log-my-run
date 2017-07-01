@@ -111,10 +111,17 @@ class User {
 
 }
 
-class newUser {
+class NewUser {
   constructor (user) {
     this.name = user.name;
     this.email = user.email;
     this.password = user.password;
+  }
+}
+
+class UpdateUser extends NewUser {
+  constructor (user) {
+    super (user);
+    this.userId = user.userId;
   }
 }
