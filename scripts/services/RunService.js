@@ -67,7 +67,8 @@ myApp.factory('RunService', ['$location',
       $http(newUserReq).then((response) => {
         console.log(response);
         $location.path('/login');
-    }
+      });
+    };
 
     /**
      * @function editUser
@@ -75,6 +76,13 @@ myApp.factory('RunService', ['$location',
      * @param
      * @return
      */
+    let editUser = (user) => {
+      let editedUser = new UpdateUser (user);
+      let editUserReq = new UpdateUserRequest (editedUser);
+      $http(editUserReq).then(response => {
+        $location.path('/login');
+      });
+    };
 
     /**
      * @function deleteUser
