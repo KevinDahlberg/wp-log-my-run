@@ -44,6 +44,7 @@
         <!-- register functionality needs to be added at a later date -->
         <!-- <md-button class="md-raised md-primary md-hue-1 login-button" a href="#register">Register</md-button> -->
         <!-- </a> -->
+        <md-button class="md-raised md-primary md-hue-1 login-button" a href="#register">Register</md-button></a>
       </div>
     </form>
   <?php endif; ?>

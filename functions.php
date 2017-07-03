@@ -59,6 +59,7 @@ function scripts() {
   wp_enqueue_script('HomeController', get_template_directory_uri() .'/scripts/controllers/HomeController.js');
   wp_enqueue_script('EnterRunController', get_template_directory_uri() .'/scripts/controllers/EnterRunController.js');
 	wp_enqueue_script('ViewRunController', get_template_directory_uri() .'/scripts/controllers/ViewRunController.js');
+	wp_enqueue_script('RegisterController', get_template_directory_uri() .'/scripts/controllers/RegisterController.js');
 
 
   // With get_stylesheet_directory_uri()
