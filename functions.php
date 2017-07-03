@@ -64,7 +64,10 @@ function scripts() {
 
   // With get_stylesheet_directory_uri()
   wp_localize_script('scripts', 'localized',
-  array('partials' => get_stylesheet_directory_uri() . '/views/'));
+  array(
+		'partials' => get_stylesheet_directory_uri() . '/views/',
+		'url' => get_stylesheet_directory_uri() . '/'
+		));
 }
 
 add_action( 'wp_enqueue_scripts', 'scripts');

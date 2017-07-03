@@ -39,7 +39,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngS
           controller: 'ViewRunController as viewRun'
         })
         .when('/register', {
-          templateUrl: localized.partials + 'register.html',
+          templateUrl: localized.url + 'register.php',
           controller: 'RegisterController as register'
         })
         .otherwise({
