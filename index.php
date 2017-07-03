@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html ng-App="myApp">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width", initial-scale="1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>Log My Run APP</title>
 
-  <!-- Stylesheets -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
-  <?php wp_head(); ?>
-</head>
-<body>
   <?php get_header() ?>
 
   <?php if( is_user_logged_in() && current_user_can( 'edit_posts' ) ) : ?>
@@ -41,9 +27,9 @@
       <div layout="row" layout-align="space-around center">
         <md-button class="md-raised md-primary md-hue-1 login-button" id="wp-submit" type="submit" name="wp-submit" value="Login">Log In</md-button>
         <input type="hidden" name="action" value="my_login_action" />
-        <md-button class="md-raised md-primary md-hue-1 login-button" a href="#/register">Register</md-button></a>
+        <md-button class="md-raised md-primary md-hue-1 login-button" a href="">Register</md-button></a>
       </div>
     </form>
   <?php endif; ?>
-</body>
-</html>
+
+  <?php get_footer() ?>

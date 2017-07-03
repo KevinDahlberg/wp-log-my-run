@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html ng-App="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width", initial-scale="1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Log My Run APP</title>
+
+  <!-- Stylesheets -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+  <?php wp_head(); ?>
+</head>
+<body>
 <header>
   <md-toolbar class="md-primary md-hue-1">
     <div class="md-toolbar-tools" layout="row" layout-align="space-between center" >
