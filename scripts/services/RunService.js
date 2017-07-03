@@ -97,6 +97,7 @@ myApp.factory('RunService', ['$location',
       runCreate,
       saveRun,
       addUser,
+      
       //Variables
       dropdownTime,
       dropdownMiles,

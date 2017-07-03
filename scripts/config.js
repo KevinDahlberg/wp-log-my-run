@@ -38,6 +38,10 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngS
           templateUrl: localized.partials + 'view_run.html',
           controller: 'ViewRunController as viewRun'
         })
+        .when('/register', {
+          templateUrl: localized.partials + 'register.html',
+          controller: 'RegisterController as register'
+        })
         .otherwise({
           redirectTo: '/home'
         });

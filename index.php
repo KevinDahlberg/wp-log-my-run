@@ -41,10 +41,7 @@
       <div layout="row" layout-align="space-around center">
         <md-button class="md-raised md-primary md-hue-1 login-button" id="wp-submit" type="submit" name="wp-submit" value="Login">Log In</md-button>
         <input type="hidden" name="action" value="my_login_action" />
-        <!-- register functionality needs to be added at a later date -->
-        <!-- <md-button class="md-raised md-primary md-hue-1 login-button" a href="#register">Register</md-button> -->
-        <!-- </a> -->
-        <md-button class="md-raised md-primary md-hue-1 login-button" a href="#register">Register</md-button></a>
+        <md-button class="md-raised md-primary md-hue-1 login-button" a href="#/register">Register</md-button></a>
       </div>
     </form>
   <?php endif; ?>
