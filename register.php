@@ -1,5 +1,3 @@
-<?php get_header() ?>
-
 <div ng-controller="RegisterController as register">
 <md-content layout="row" layout-align="center center">
   <div class = "column">
@@ -26,5 +24,3 @@
 </div>
 </md-content>
 </div>
-
-<?php get_footer() ?>

@@ -1,5 +1,5 @@
-myApp.factory('RunService', ['$location',
-  function($location) {
+myApp.factory('RunService', ['$location', '$http',
+  function($location, $http) {
     let RunService = this;
 
     /**
@@ -97,7 +97,7 @@ myApp.factory('RunService', ['$location',
       runCreate,
       saveRun,
       addUser,
-      
+
       //Variables
       dropdownTime,
       dropdownMiles,
