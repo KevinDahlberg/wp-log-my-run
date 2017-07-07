@@ -89,6 +89,20 @@ add_action('init', function(){
   exit;
 });
 
+add_action('init', function(){
+
+	//not the register request?
+	if(!isset($_POST['action']) || $_POST['action'] !== 'my_register_action')
+		return;
+
+	$result = wp_insert_user();
+
+	if(is_wp_error($result))
+		wp_die('Regiester Failed');
+	header('Location: ' . $_SERVER['REQUEST_URI']);
+	exit;
+});
+
 // The object type. For custom post types, this is 'post';
 // for custom comment types, this is 'comment'. For user meta,
 // this is 'user'.

@@ -33,10 +33,9 @@
   </div>
 
   <div ng-show="login">
-    <div ng-controller="HomeController">
     <md-content layout="row" layout-align="center center">
       <div class = "column">
-      <form ng-submit="addUser(newUser)">
+      <form class="register-input" action="" method="post">
         <md-input-container>
             <label for="username">Username:</label>
             <input type="text" ng-model="newUser.name" />
@@ -54,11 +53,11 @@
       <br>
       <div layout="row" layout-align="center center">
         <md-button class="md-raised md-primary md-hue-1" type="submit" name="submit" value="Register">Register</md-button>
+        <input type="hidden" name="action" value="my_register_action" />
       </div>
       </form>
     </div>
     </md-content>
-  </div>
   </div>
 
   <?php endif; ?>
