@@ -37,6 +37,6 @@ myApp.controller('HomeController', ['RunService', 'DatabaseService',
 
     home.getRun(WPsettings.user_ID);
 
-    $scope.addUser = RunService.addUser;
+    home.addUser = RunService.addUser;
   }
 ]);

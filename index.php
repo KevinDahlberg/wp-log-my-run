@@ -27,13 +27,16 @@
       <div layout="row" layout-align="space-around center">
         <md-button class="md-raised md-primary md-hue-1 login-button" id="wp-submit" type="submit" name="wp-submit" value="Login">Log In</md-button>
         <input type="hidden" name="action" value="my_login_action" />
-        <md-button class="md-raised md-primary md-hue-1 login-button" ng-click="login = !login">Register</md-button></a>
+        <a href src="<?php echo get_template_directory_uri(); ?>/views/register.html">
+          <md-button class="md-raised md-primary md-hue-1 login-button">Register</md-button>
+        </a>
       </div>
     </form>
   </div>
 
   <div ng-show="login">
-    <md-content layout="row" layout-align="center center">
+    <ng-include src="'<?php echo get_template_directory_uri(); ?>/views/register.html'"></ng-include>
+    <!-- <md-content layout="row" layout-align="center center">
       <div class = "column">
       <form class="register-input" action="" method="post">
         <md-input-container>
@@ -57,7 +60,7 @@
       </div>
       </form>
     </div>
-    </md-content>
+    </md-content> -->
   </div>
 
   <?php endif; ?>
